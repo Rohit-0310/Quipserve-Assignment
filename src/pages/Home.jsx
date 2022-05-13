@@ -16,7 +16,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import NavBar from './NavBar';
-import { deleteListUsingIconAction, getAllPostsAction } from '../Redux/Actions/Actions';
+import { deleteListUsingIconAction, deletePost, getAllPostsAction } from '../Redux/Actions/Actions';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -42,44 +42,25 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 
 const Home = () => {
-    // const classes = useStyles()
 
     let dispatch = useDispatch();
     const navigate = useNavigate()
 
-    const [postdata, setPostData] = useState("");
-
     const {posts} = useSelector(state => state.allPostsReducer);
 
 
-    const getData = () => {
-      setPostData(posts);
-    };
 
     useEffect(()=>{
         dispatch(getAllPostsAction())
     }, [dispatch])
 
-    useEffect(()=>{
-      getData()
-    },[posts])
     
 
     const handleDelete = (id) => {
-      let tempPost =
-      posts &&
-      posts.filter((post) => {
-        console.log(post.id!== id)
-        return post.id !== id;
-      });
-      console.log(tempPost)
-    dispatch(deleteListUsingIconAction(tempPost));
-
-
-        // if(window.confirm('Are you sure you want to delete this post?')){
-        //     // dispatch(deletePost(id));
+        if(window.confirm('Are you sure you want to delete this post?')){
+            dispatch(deletePost(id));
             
-        // }
+        }
     };
 
     // const handlAddPost = () => {
@@ -118,7 +99,7 @@ const Home = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {postdata && postdata.map((post) => (
+        {posts && posts.map((post) => (
             <StyledTableRow key={post.id}>
               <StyledTableCell width="3%" component="th" scope="row">{post.id}</StyledTableCell>
               <StyledTableCell width="5%" align="left">{post.userId}</StyledTableCell>
@@ -160,7 +141,7 @@ const Home = () => {
                 </ButtonGroup>
               </StyledTableCell> */}
             </StyledTableRow>
-          ))}
+        ))}
         </TableBody>
       </Table>
     </TableContainer>

@@ -3,9 +3,16 @@ import {
     GET_ALL_POSTS_SUCCESS,
     GET_ALL_POSTS_ERROR,
     ADD_LIST,
-    DELETE_ICON_LIST,    
+    DELETE_ICON_LIST,
+    DELETE_POST,    
 } from "../ActionTypes/actionType";
 import axios from "axios";
+
+
+
+const postDeleted = () => ({
+    type: DELETE_POST
+})
 
 
 export const getAllPostsAction = () => async(dispatch) => {
@@ -19,6 +26,8 @@ export const getAllPostsAction = () => async(dispatch) => {
         dispatch({ type: GET_ALL_POSTS_ERROR, payload: error})
     }
 };
+
+
 export const addListAction = (formData) => {
     return {
       type: ADD_LIST,
@@ -29,14 +38,21 @@ export const addListAction = (formData) => {
   };
 
 
-export const deleteListUsingIconAction = (list) => {
-    return {
-      type: DELETE_ICON_LIST,
-      payload: {
-        data: list,
-      },
+
+
+export const deletePost = (id) => {
+    return function (dispatch) {
+        axios
+            .delete(`https://quipservepost.herokuapp.com/post/${id}`)
+            .then((resp) => {
+                dispatch(postDeleted());
+                dispatch(getAllPostsAction());
+                console.log("res",resp)
+                
+            })
+            .catch((err) => console.log("err", err));
     };
-  };
+};
 
 // export const addPost = (post) => {
 //     return function (dispatch) {

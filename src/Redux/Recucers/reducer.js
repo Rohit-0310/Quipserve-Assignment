@@ -3,7 +3,7 @@ import {
     GET_ALL_POSTS_SUCCESS,
     GET_ALL_POSTS_ERROR,
     ADD_LIST,
-    DELETE_ICON_LIST,
+    DELETE_POST,
     
 
 } from "../ActionTypes/actionType";
@@ -26,12 +26,9 @@ const allPostsReducer =(state = {posts: []}, action) => {
               ...state,
               listData: [...state.listData, action.payload.data],
             };
+        case DELETE_POST:
+             return { ...state,  loading:false,}
 
-        case DELETE_ICON_LIST:
-            return {
-              ...state,
-              listData: action.payload.data,
-            };
             
         default:
             return state;

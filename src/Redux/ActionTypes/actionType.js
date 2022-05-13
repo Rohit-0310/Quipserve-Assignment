@@ -3,8 +3,10 @@ export const GET_ALL_POSTS_SUCCESS = 'GET_ALL_POSTS_SUCCESS';
 export const GET_ALL_POSTS_ERROR = 'GET_ALL_POSTS_ERROR'
 
 export const ADD_LIST = "ADD_LIST";
-export const DELETE_ICON_LIST = "DELETE_ICON_LIST";
 
+
+
+export const DELETE_POST = 'DELETE_POST';
 
 
 // export const DELETE_POST_LOADING = 'DELETE_POST_LOADING';
