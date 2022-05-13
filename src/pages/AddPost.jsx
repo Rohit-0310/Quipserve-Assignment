@@ -11,7 +11,7 @@ import Stack from '@mui/material/Stack';
 
 
 
-import { addPost } from '../redux/actions';
+import { addPost } from '../Redux/Actions/Actions';
 import NavBar from './NavBar';
 
 

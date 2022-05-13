@@ -4,6 +4,7 @@ import {
     GET_ALL_POSTS_ERROR,
     ADD_LIST,
     DELETE_POST,
+    ADD_POST,
     
 
 } from "../ActionTypes/actionType";
@@ -26,6 +27,11 @@ const allPostsReducer =(state = {posts: []}, action) => {
               ...state,
               listData: [...state.listData, action.payload.data],
             };
+
+            
+        case ADD_POST:
+        return { ...state,  loading:false,}
+
         case DELETE_POST:
              return { ...state,  loading:false,}
 

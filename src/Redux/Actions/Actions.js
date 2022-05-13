@@ -3,8 +3,8 @@ import {
     GET_ALL_POSTS_SUCCESS,
     GET_ALL_POSTS_ERROR,
     ADD_LIST,
-    DELETE_ICON_LIST,
-    DELETE_POST,    
+    DELETE_POST,
+    ADD_POST,    
 } from "../ActionTypes/actionType";
 import axios from "axios";
 
@@ -14,6 +14,9 @@ const postDeleted = () => ({
     type: DELETE_POST
 })
 
+const postAdded = () => ({
+    type: ADD_POST
+})
 
 export const getAllPostsAction = () => async(dispatch) => {
     try{
@@ -28,14 +31,14 @@ export const getAllPostsAction = () => async(dispatch) => {
 };
 
 
-export const addListAction = (formData) => {
-    return {
-      type: ADD_LIST,
-      payload: {
-        data: formData,
-      },
-    };
-  };
+// export const addListAction = (formData) => {
+//         return {
+//             type: ADD_LIST,
+//             payload: {
+//               data: formData,
+//             },
+//         };
+//     };  
 
 
 
@@ -54,16 +57,17 @@ export const deletePost = (id) => {
     };
 };
 
-// export const addPost = (post) => {
-//     return function (dispatch) {
-//         axios
-//             .post(`${process.env.REACT_APP_API}`, post)
-//             .then((resp) => {
-//                 dispatch(postAdded());
-//                 console.log("res",resp)
+
+export const addPost = (post) => {
+    return function (dispatch) {
+        axios
+            .post(`https://quipservepost.herokuapp.com/post`, post)
+            .then((resp) => {
+                dispatch(postAdded());
+                console.log("res",resp)
                 
                 
-//             })
-//             .catch((err) => console.log("err", err));
-//     };
-// };
+            })
+            .catch((err) => console.log("err", err));
+    };
+};

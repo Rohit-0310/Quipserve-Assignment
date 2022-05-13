@@ -8,15 +8,16 @@ export const ADD_LIST = "ADD_LIST";
 
 export const DELETE_POST = 'DELETE_POST';
 
+export const ADD_POST = 'ADD_POST';
 
 // export const DELETE_POST_LOADING = 'DELETE_POST_LOADING';
 // export const DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS';
 // export const DELETE_POST_ERROR = 'DELETE_POST_ERROR';
 
 
-export const ADD_POST_LOADING = 'ADD_POST_LOADING';
-export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS';
-export const ADD_POST_ERROR = 'ADD_POST_ERROR';
+// export const ADD_POST_LOADING = 'ADD_POST_LOADING';
+// export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS';
+// export const ADD_POST_ERROR = 'ADD_POST_ERROR';
 
 // export const GET_SINGLE_POST_LOADING = 'GET_SINGLE_POST_LOADING';
 // export const GET_SINGLE_POST_SUCCESS = 'GET_SINGLE_POST_SUCCESS';
